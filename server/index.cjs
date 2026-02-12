@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const PORT = 8070;
+const PORT = process.env.PORT || 8070;
 const DB_FILE = path.join(__dirname, 'db.json');
 
 // Helper to read DB
