@@ -4,6 +4,16 @@ import { Card } from './Card';
 import { CATEGORY_GROUPS } from '../hooks/useExpenses';
 import clsx from 'clsx';
 
+// InputGroup component moved outside to prevent re-creation on every render
+const InputGroup = ({ icon: Icon, children }) => (
+    <div className="relative">
+        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+            <Icon size={18} />
+        </div>
+        {children}
+    </div>
+);
+
 export const ExpenseForm = ({ onAdd }) => {
     const [formData, setFormData] = useState({
         description: '',
@@ -35,15 +45,6 @@ export const ExpenseForm = ({ onAdd }) => {
             amount: ''
         }));
     };
-
-    const InputGroup = ({ icon: Icon, children }) => (
-        <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
-                <Icon size={18} />
-            </div>
-            {children}
-        </div>
-    );
 
     const inputClasses = "pl-10 block w-full rounded-xl border-gray-200 bg-gray-50 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm py-3 transition-colors";
 

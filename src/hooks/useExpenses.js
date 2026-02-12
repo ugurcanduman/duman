@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { isSameMonth, parseISO, subMonths, format } from 'date-fns';
 import { tr } from 'date-fns/locale';
 
-const API_URL = 'http://localhost:8070/api';
+const API_URL = '/api';
 
 export const CATEGORY_GROUPS = {
     'Temel Faturalar': ['Elektrik', 'Su', 'Doğalgaz', 'İnternet', 'Telefon'],

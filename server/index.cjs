@@ -56,13 +56,17 @@ const server = http.createServer((req, res) => {
         req.on('data', chunk => { body += chunk.toString(); });
         req.on('end', () => {
             try {
+                console.log('Body received:', body);
                 callback(JSON.parse(body));
             } catch (e) {
+                console.error('JSON Parse Error:', e.message, 'Body:', body);
                 res.writeHead(400, { 'Content-Type': 'application/json' });
                 res.end(JSON.stringify({ error: 'Invalid JSON' }));
             }
         });
     };
+
+    console.log(`Received ${req.method} request for ${pathname}`);
 
     // Endpoints
     if (pathname === '/api/data' && req.method === 'GET') {
